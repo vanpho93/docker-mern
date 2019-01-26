@@ -1,5 +1,5 @@
-const { connectDatabase } = require('./connect-database');
-const { app } = require('./app');
+import { connectDatabase } from './connect-database';
+import { app } from './app';
 
 async function start() {
     await connectDatabase();
