@@ -1,0 +1,35 @@
+version: '2'
+services:
+  client:
+    container_name: client
+    image: node:8
+    working_dir: /urs
+    volumes:
+      - ./client:/urs
+    command: npm run start
+    ports:
+      - "4000:3000"
+    depends_on:
+      - server
+  server:
+    container_name: server
+    image: node:8
+    working_dir: /urs
+    volumes:
+      - ./server:/urs
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:3.6
+    container_name: mongodb
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data/db:/data/db
+    ports:
+        - "27017:27017"
+    command: mongod
