@@ -5,7 +5,7 @@ import { User } from './user.model';
 
 export const app = express();
 
-app.use(express.static('/'));
+app.use(express.static('public'));
 app.use(cors());
 app.use(json());
 

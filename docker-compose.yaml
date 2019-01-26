@@ -7,6 +7,8 @@ services:
     volumes:
       - ./client:/urs
     command: npm run start
+    environment: 
+      - NODE_ENV: docker
     ports:
       - "4000:3000"
     depends_on:
